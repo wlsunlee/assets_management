@@ -6,11 +6,11 @@ const prisma = new PrismaClient();
 const login = async (req, res, next) => {
 
     try {
-        const {email, password} = req.body;
+        const { email, password } = req.body;
 
         const accessToken = await userService.login(email, password, res);
 
-        //res.status(200).json({message : `${pong} success`});
+        res.status(200).json({ status : 200, accessToken : accessToken });
     } catch (error) {
         next(error);
         await prisma.$disconnect();
