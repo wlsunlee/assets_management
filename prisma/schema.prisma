@@ -1,0 +1,74 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          Int        @id @default(autoincrement())  
+  email       String     @unique
+  password    String?       
+  created_at  DateTime   @default(now())
+  update_at   DateTime?  @default(now())
+
+  asset Asset[]  
+  @@map("users")
+}
+
+model Coin {
+  id              Int       @id @default(autoincrement())  
+  coin_name       String
+  blockchain_type String?
+  price           Float
+  created_at      DateTime  @default(now())
+
+  asset Asset[]
+  @@map("coins")
+}
+
+model Asset {
+  id              Int       @id @default(autoincrement())
+  user_id         Int
+  coin_id         Int
+  deposit_address String
+  quantity        Float
+  created_at      DateTime  @default(now())
+  update_at       DateTime? @default(now())
+
+  deposit Deposit[]
+  withdrawal Withdrawal[]
+  user   User     @relation(fields: [user_id], references: [id])
+  coin   Coin     @relation(fields: [coin_id], references: [id])
+  @@map("assets")
+}
+
+model Deposit {
+  id          Int        @id @default(autoincrement())  
+  asset_id    Int
+  quantity    Float
+  status      String  
+  created_at  DateTime   @default(now())
+  update_at   DateTime?  @default(now())
+
+  asset   Asset     @relation(fields: [asset_id], references: [id])
+  @@map("deposits")
+}
+
+model Withdrawal {
+  id                  Int       @id @default(autoincrement())  
+  asset_id            Int
+  withdrawal_address  String
+  quantity            Float
+  status              String
+  created_at          DateTime  @default(now())
+  update_at           DateTime? @default(now())
+
+  asset   Asset     @relation(fields: [asset_id], references: [id])
+  @@map("withdrawals")
+}
