@@ -23,10 +23,7 @@ const validityCheck = (email, password, res) => {
     const emailCheck = /^[a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]*\.[a-zA-Z]{2,3}$/;
     const passwordCheck = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"])[A-Za-z\d\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]{8,100}$/;
     const samePatternCheck = /(\w)\1\1/;
-
-    console.log(!passwordCheck.test(password));
-    console.log(samePatternCheck.test(password));
-
+    
     if(!emailCheck.test(email) || !passwordCheck.test(password) || samePatternCheck.test(password)) {
         errService.errorHandler(400, "INVALID_VALUES", res);
     }
