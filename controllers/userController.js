@@ -10,7 +10,7 @@ const login = async (req, res, next) => {
 
         const accessToken = await userService.login(email, password, res);
 
-        res.status(200).json({ status : 200, accessToken : accessToken });
+        res.status(200).json({ status : 200, access_token : accessToken });
     } catch (error) {
         next(error);
         await prisma.$disconnect();

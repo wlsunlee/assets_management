@@ -37,7 +37,7 @@ model Asset {
   user_id         Int
   coin_id         Int
   deposit_address String
-  quantity        Float
+  quantity        Decimal   @db.Decimal(24,12)
   created_at      DateTime  @default(now())
   update_at       DateTime? @default(now())
 
@@ -51,7 +51,7 @@ model Asset {
 model Deposit {
   id          Int        @id @default(autoincrement())  
   asset_id    Int
-  quantity    Float
+  quantity    Decimal    @db.Decimal(24,12)
   status      String  
   created_at  DateTime   @default(now())
   update_at   DateTime?  @default(now())
@@ -64,7 +64,7 @@ model Withdrawal {
   id                  Int       @id @default(autoincrement())  
   asset_id            Int
   withdrawal_address  String
-  quantity            Float
+  quantity            Decimal   @db.Decimal(24,12)
   status              String
   created_at          DateTime  @default(now())
   update_at           DateTime? @default(now())
