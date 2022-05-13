@@ -20,8 +20,26 @@ const assetList = async (req, res, next) => {
 
 }
 
+const assetAddress = async (req, res, next) => {
+
+    try {
+        const { userId } = req.headers;
+        const { coinId, coinBlockchainTypeId, blockchainTypeId } = req.body;
+
+        const assetAddress = await assetService.assetAddress(userId, coinId, coinBlockchainTypeId, blockchainTypeId, res);
+
+        res.status(200).json({ status : 200, assetAddress : assetAddress });
+    } catch (error) {
+        next(error);
+        await prisma.$disconnect();
+    } finally {
+        await prisma.$disconnect();
+    }
+
+}
+
 const error = (err, req, res, next) => {
     console.error(err);
 }
 
-module.exports = { error, assetList }
+module.exports = { error, assetList, assetAddress }
