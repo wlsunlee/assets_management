@@ -10,6 +10,7 @@ const getAssetList = async (userId) => {
             ifnull(ats.quantity, 0) quantity,
             co.price,
             co.coins_blockchain_types_id,
+            ats.blockchain_type_id,
             co.type_name
         from 
             (select 
@@ -37,4 +38,27 @@ const getAssetList = async (userId) => {
         `
 }
 
-module.exports = { getAssetList }
+const getAssetAddress = async (userId, coinId, blockchainTypeId) => {
+    return prisma.$queryRaw`
+        select 
+            deposit_address 
+        from assets 
+        where user_id = ${userId} 
+        and coin_id = ${coinId} 
+        and blockchain_type_id = ${blockchainTypeId}
+        `
+}
+
+const createAssetAddress = async (userId, coinId, hash, blockchainTypeId) => {
+    return prisma.$queryRaw`
+        insert into assets(user_id, coin_id, deposit_address, quantity, blockchain_type_id) values(${userId}, ${coinId}, ${hash}, 0, ${blockchainTypeId})
+        `
+}
+
+const getBlockchainTypeId = async (coins_blockchain_types_id) => {
+    return prisma.$queryRaw`
+        select blockchain_type_id from coins_blockchain_types where id = ${coins_blockchain_types_id}
+        `
+}
+
+module.exports = { getAssetList, getAssetAddress, createAssetAddress, getBlockchainTypeId }
