@@ -46,6 +46,7 @@ model Asset {
   withdrawal Withdrawal[]
   user   User     @relation(fields: [user_id], references: [id])
   coin   Coin     @relation(fields: [coin_id], references: [id])
+  blockchain_type   Blockchain_Type     @relation(fields: [blockchain_type_id], references: [id])
   @@map("assets")
 }
 
@@ -64,24 +65,30 @@ model Blockchain_Type {
   type_name       String
 
   coin_blockchain_type Coin_Blockchain_Type[]
+  asset Asset[]
+  deposit Deposit[]
+  withdrawal Withdrawal[]
   @@map("blockchain_types")
 }
 
 model Deposit {
   id          Int        @id @default(autoincrement())  
   asset_id    Int
+  blockchain_type_id  Int
   quantity    Decimal    @db.Decimal(24,12)
   status      String  
   created_at  DateTime   @default(now())
   update_at   DateTime?  @default(now())
 
   asset   Asset     @relation(fields: [asset_id], references: [id])
+  blockchain_type   Blockchain_Type     @relation(fields: [blockchain_type_id], references: [id])
   @@map("deposits")
 }
 
 model Withdrawal {
   id                  Int       @id @default(autoincrement())  
   asset_id            Int
+  blockchain_type_id  Int
   withdrawal_address  String
   quantity            Decimal   @db.Decimal(24,12)
   status              String
@@ -89,5 +96,6 @@ model Withdrawal {
   update_at           DateTime? @default(now())
 
   asset   Asset     @relation(fields: [asset_id], references: [id])
+  blockchain_type   Blockchain_Type     @relation(fields: [blockchain_type_id], references: [id])
   @@map("withdrawals")
 }

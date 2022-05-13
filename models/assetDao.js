@@ -5,6 +5,7 @@ const prisma = new PrismaClient();
 const getAssetList = async (userId) => {
     return prisma.$queryRaw`
         select 
+            ats.asset_id,
             co.coin_id,
             co.coin_name,
             ifnull(ats.quantity, 0) quantity,
