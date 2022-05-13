@@ -24,20 +24,21 @@ model User {
 model Coin {
   id              Int       @id @default(autoincrement())  
   coin_name       String
-  blockchain_type String?
   price           Float
   created_at      DateTime  @default(now())
 
   asset Asset[]
+  coin_blockchain_type Coin_Blockchain_Type[]
   @@map("coins")
 }
 
 model Asset {
-  id              Int       @id @default(autoincrement())
-  user_id         Int
-  coin_id         Int
-  deposit_address String
-  quantity        Decimal   @db.Decimal(24,12)
+  id                  Int       @id @default(autoincrement())
+  user_id             Int
+  coin_id             Int
+  deposit_address     String
+  quantity            Decimal   @db.Decimal(24,12)
+  blockchain_type_id  Int
   created_at      DateTime  @default(now())
   update_at       DateTime? @default(now())
 
@@ -46,6 +47,24 @@ model Asset {
   user   User     @relation(fields: [user_id], references: [id])
   coin   Coin     @relation(fields: [coin_id], references: [id])
   @@map("assets")
+}
+
+model Coin_Blockchain_Type {
+  id                  Int       @id @default(autoincrement())  
+  coin_id             Int
+  blockchain_type_id  Int
+
+  coin   Coin     @relation(fields: [coin_id], references: [id])
+  blockchain_type   Blockchain_Type     @relation(fields: [blockchain_type_id], references: [id])
+  @@map("coins_blockchain_types")
+}
+
+model Blockchain_Type {
+  id              Int       @id @default(autoincrement())
+  type_name       String
+
+  coin_blockchain_type Coin_Blockchain_Type[]
+  @@map("blockchain_types")
 }
 
 model Deposit {
