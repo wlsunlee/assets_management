@@ -16,4 +16,23 @@ const createWithdrawal = async (assetId, withdrawalAddress, quantity, blockchain
             values(${assetId},${withdrawalAddress},${quantity},'대기',${blockchainTypeId})`
 }
 
-module.exports = { getAsset, createWithdrawal }
+const getWithdrawalList = async () => {
+    return prisma.$queryRaw`
+        select id, asset_id, quantity from withdrawals where status = '대기' order by id`
+}
+
+const updateSatus = async (id, satus) => {
+    return prisma.$queryRaw`
+        update withdrawals set status = ${satus}, update_at=now() where id = ${id}`
+}
+
+const updateAsset = async (assetId, quantity) => {
+    return prisma.$queryRaw`
+        update 
+            assets ats,
+            (select quantity from assets where id = ${assetId}) bats 
+        set ats.quantity = bats.quantity - ${quantity}, ats.update_at=now() 
+        where ats.id = ${assetId}`
+}
+
+module.exports = { getAsset, createWithdrawal, getWithdrawalList, updateSatus, updateAsset }
