@@ -5,6 +5,7 @@ const prisma = new PrismaClient();
 const getAssetList = async (userId) => {
     return prisma.$queryRaw`
         select 
+            ats.asset_id,
             co.coin_id,
             co.coin_name,
             ifnull(ats.quantity, 0) quantity,
@@ -28,6 +29,7 @@ const getAssetList = async (userId) => {
             order by cbt.id) co
         left join 
             (select 
+                id asset_id,
                 quantity,
                 blockchain_type_id, 
                 coin_id
