@@ -18,4 +18,34 @@ const getAssetByassetId = async (assetId, userId) => {
     return await withdrawalDao.getAsset(assetId, userId);
 }
 
-module.exports = { withdrawal }
+const withdrawalBatch = async (res) => {
+
+    const withdrawalList = await getWithdrawalList();
+    const satus = ["진행중", "완료"];
+
+    console.log(`withdrawalBatch total : ${withdrawalList.length}`);
+
+    if(withdrawalList.length <= 0) {
+        return
+    }
+    for(let i = 0; i < withdrawalList.length; i++) {
+        await updateSatus(withdrawalList[i].id, satus[0]);
+        await updateAsset(withdrawalList[i].asset_id, withdrawalList[i].quantity);
+        await updateSatus(withdrawalList[i].id, satus[1]);
+    }
+
+}
+
+const getWithdrawalList = async () => {
+    return await withdrawalDao.getWithdrawalList();
+}
+
+const updateSatus = async (id, satus) => {
+    return await withdrawalDao.updateSatus(id, satus);
+}
+
+const updateAsset = async (assetId, quantity) => {
+    return await withdrawalDao.updateAsset(assetId, quantity);
+}
+
+module.exports = { withdrawal, withdrawalBatch }
