@@ -1,4 +1,4 @@
-const userService = require("../services/userService");
+const withdrawalService = require("../services/withdrawalService");
 const { PrismaClient } = require("@prisma/client");
 
 const prisma = new PrismaClient();
@@ -7,11 +7,11 @@ const withdrawal = async (req, res, next) => {
 
     try {
         const { userId } = req.headers;
-        //const { email, password } = req.body;
+        const { assetId, blockchainTypeId, withdrawalAddress, quantity } = req.body;
+       
+        await withdrawalService.withdrawal(userId, assetId, blockchainTypeId, withdrawalAddress, quantity, res);
 
-        //const accessToken = await userService.login(email, password, res);
-
-        res.status(200).json({ status : 200, access_token : "accessToken" });
+        res.status(201).json({ status : 201 });
     } catch (error) {
         next(error);
         await prisma.$disconnect();

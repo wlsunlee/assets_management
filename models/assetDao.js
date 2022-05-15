@@ -29,6 +29,7 @@ const getAssetList = async (userId) => {
             order by cbt.id) co
         left join 
             (select 
+                id asset_id,
                 quantity,
                 blockchain_type_id, 
                 coin_id
