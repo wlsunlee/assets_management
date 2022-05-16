@@ -35,4 +35,9 @@ const updateAsset = async (assetId, quantity) => {
         where ats.id = ${assetId}`
 }
 
-module.exports = { getAsset, createWithdrawal, getWithdrawalList, updateSatus, updateAsset }
+const getWithdrawalByassetId = async (assetId) => {
+    return prisma.$queryRaw`
+        select ifnull(sum(quantity), 0) coins_quantity from withdrawals where asset_id = ${assetId} and (status = '대기' or status = '진행')`
+}
+
+module.exports = { getAsset, createWithdrawal, getWithdrawalList, updateSatus, updateAsset, getWithdrawalByassetId }

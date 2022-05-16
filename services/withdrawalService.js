@@ -8,7 +8,9 @@ const withdrawal = async (userId, assetId, blockchainTypeId, withdrawalAddress, 
     if(asset.length < 0) {
         errService.errorHandler(400, "INVALID_ASSET", res);
     }
-    if(asset[0].quantity - quantity < 0) {
+    const yetQuantity = await getWithdrawalByassetId(assetId);
+
+    if(asset[0].quantity - (quantity + yetQuantity[0].coins_quantity) < 0) {
         errService.errorHandler(400, "LIMIT_QUANTITY", res);
     }
     await withdrawalDao.createWithdrawal(assetId, withdrawalAddress, quantity, blockchainTypeId);
@@ -46,6 +48,10 @@ const updateSatus = async (id, satus) => {
 
 const updateAsset = async (assetId, quantity) => {
     return await withdrawalDao.updateAsset(assetId, quantity);
+}
+
+const getWithdrawalByassetId = async (assetId) => {
+    return await withdrawalDao.getWithdrawalByassetId(assetId);
 }
 
 module.exports = { withdrawal, withdrawalBatch }
