@@ -8,7 +8,9 @@ const withdrawalCron = cron.schedule("* * * * *", async () => {
     console.log(`------ withdrawalBatch begin ------`);
     await withdrawalService.withdrawalBatch(res);
     console.log(`------ withdrawalBatch end ------`);
-}, false);
+}, {
+    scheduled: false
+});
 
 const withdrawalBatch = async (req, res, next) => {
 
