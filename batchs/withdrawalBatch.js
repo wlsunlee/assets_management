@@ -4,7 +4,7 @@ const { PrismaClient } = require("@prisma/client");
 
 const prisma = new PrismaClient();
 
-const withdrawalCron = cron.schedule("* * * * *", async () => {
+const withdrawalCron = cron.schedule("* * * * *", async (res) => {
     console.log(`------ withdrawalBatch begin ------`);
     await withdrawalService.withdrawalBatch(res);
     console.log(`------ withdrawalBatch end ------`);
@@ -15,7 +15,7 @@ const withdrawalCron = cron.schedule("* * * * *", async () => {
 const withdrawalBatch = async (req, res, next) => {
 
     try {
-        withdrawalCron.start();
+        withdrawalCron.start(res);
         
         res.status(200).json({ status : 200, message : "BATCH_START" });
     } catch (error) {
@@ -29,7 +29,7 @@ const withdrawalBatch = async (req, res, next) => {
 const stopWithdrawalBatch = async (req, res, next) => {
 
     try {
-        withdrawalCron.stop();
+        withdrawalCron.stop(res);
         console.log(`------ withdrawalBatch stop ------`);
         
         res.status(200).json({ status : 200, message : "BATCH_STOP" });
