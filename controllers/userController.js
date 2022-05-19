@@ -20,8 +20,25 @@ const login = async (req, res, next) => {
 
 }
 
+const info = async (req, res, next) => {
+
+    try {
+        const { userId } = req.headers;
+
+        const userEmail = await userService.info(userId, res);
+
+        res.status(200).json({ status : 200, userEmail : userEmail });
+    } catch (error) {
+        next(error);
+        await prisma.$disconnect();
+    } finally {
+        await prisma.$disconnect();
+    }
+
+}
+
 const error = (err, req, res, next) => {
     console.error(err);
 }
 
-module.exports = { error, login }
+module.exports = { error, login, info }

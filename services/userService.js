@@ -39,4 +39,23 @@ const getUserByEmail = async (email, res) => {
     return user;
 }
 
-module.exports = { login }
+const info = async (userId, res) => {
+
+    const user = await getUserByuserId(userId, res);
+
+    return user[0].email;
+}
+
+const getUserByuserId = async (userId, res) => {
+
+    const user = await userDao.getUserEmail(userId);
+
+    if(user.length <= 0) {
+        errService.errorHandler(400, "INVALID_USER", res);
+    }
+    return user;
+}
+
+
+
+module.exports = { login, info }

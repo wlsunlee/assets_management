@@ -7,4 +7,9 @@ const getUser = async (email) => {
         select id, password from users where email = ${email}`
 }
 
-module.exports = { getUser }
+const getUserEmail = async (userId) => {
+    return prisma.$queryRaw`
+        select email from users where id = ${userId}`
+}
+
+module.exports = { getUser, getUserEmail }
