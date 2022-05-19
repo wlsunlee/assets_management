@@ -123,8 +123,7 @@ const getDetailTotalPageCount = async (userId, coinId, blockchainTypeId, offset,
         ${!!detailType ? Prisma.sql`and his.detail_type = ${detailType}` : Prisma.empty}
         ${!!status ? Prisma.sql`and his.status = ${status}` : Prisma.empty}
         ${!!search ? Prisma.sql`and his.coin_name like ${search}` : Prisma.empty}
-        order by his.update_at desc
-        ${offset !== undefined ? Prisma.sql`limit 20 offset ${offset}` : Prisma.empty}
+        order by his.update_at desc        
         `
 }
 
