@@ -10,7 +10,7 @@ const getAssetList = async (userId) => {
             ifnull(ats.quantity, 0) quantity,
             co.price,
             co.coins_blockchain_types_id,
-            ats.blockchain_type_id,
+            co.blockchain_type_id,
             co.type_name
         from 
             (select 
