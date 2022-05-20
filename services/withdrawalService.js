@@ -3,6 +3,10 @@ const errService = require("./errorService");
 
 const withdrawal = async (userId, assetId, blockchainTypeId, withdrawalAddress, quantity, res) => {
 
+    if(!quantity || quantity <= 0 || !withdrawalAddress) {
+        errService.errorHandler(400, "UNDEFINED_VALUE", res);
+    }
+
     const asset = await getAssetByassetId(assetId, userId);
 
     if(asset.length < 0) {
