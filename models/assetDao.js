@@ -57,10 +57,4 @@ const createAssetAddress = async (userId, coinId, hash, blockchainTypeId) => {
         `
 }
 
-const getBlockchainTypeId = async (coins_blockchain_types_id) => {
-    return prisma.$queryRaw`
-        select blockchain_type_id from coins_blockchain_types where id = ${coins_blockchain_types_id}
-        `
-}
-
-module.exports = { getAssetList, getAssetAddress, createAssetAddress, getBlockchainTypeId }
+module.exports = { getAssetList, getAssetAddress, createAssetAddress }
