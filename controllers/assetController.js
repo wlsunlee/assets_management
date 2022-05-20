@@ -24,9 +24,9 @@ const assetAddress = async (req, res, next) => {
 
     try {
         const { userId } = req.headers;
-        const { coinId, coinBlockchainTypeId, blockchainTypeId } = req.body;
+        const { coinId, blockchainTypeId } = req.body;
 
-        const assetAddress = await assetService.assetAddress(userId, coinId, coinBlockchainTypeId, blockchainTypeId, res);
+        const assetAddress = await assetService.assetAddress(userId, coinId, blockchainTypeId, res);
 
         res.status(200).json({ status : 200, assetAddress : assetAddress });
     } catch (error) {
