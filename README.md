@@ -13,6 +13,7 @@
 - Back-end = 이의택
 <br/>
 
+## DB diagram
 [DB diagram](https://dbdiagram.io/d/627da1997f945876b60cf57f)
 
 ## API 기능
@@ -35,10 +36,17 @@
 ## 사용 예제
     
 로그인 : [POST] http://localhost:8000/users/login
+<br/>
 로그인 유저 이메일 정보 : [GET] http://localhost:8000/users/info
+<br/>
 보유 자산 리스트 : [GET] http://localhost:8000/assets
+<br/>
 코인 지갑 주소 : [POST] [POST] http://localhost:8000/assets/address
+<br/>
 출금 신청 : [POST] http://localhost:8000/withdrawals
+<br/>
 입출금 내역 : [GET] http://localhost:8000/details?coinId=&blockchainTypeId=&pageCount=&startDate=&endDate=&detailType=&status=&search=
+<br/>
 자동 출금 : [GET] http://localhost:8000/batchs/withdrawal
+<br/>
 자동 출금 정지 : [GET] http://localhost:8000/batchs/stop-withdrawal
