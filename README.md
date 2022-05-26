@@ -17,21 +17,41 @@
 [DB diagram](https://dbdiagram.io/d/627da1997f945876b60cf57f)
 
 ## API 기능
+<br/>
 1. 유저
-    로그인
-    로그인 유저 이메일 정보
+<br/>
+    -로그인
+<br/>
+    -로그인 유저 이메일 정보
+<br/>
+<br/>
 2. 자산
-    보유 자산 리스트
-    코인 지갑 주소
+<br/>
+    -보유 자산 리스트
+<br/>
+    -코인 지갑 주소
+<br/>
+<br/>
 3. 출금
-    출금 신청
+<br/>
+    -출금 신청
+<br/>
+<br/>
 4. 입출금
-    입출금 내역
+<br/>
+    -입출금 내역
+<br/>
+<br/>
 5. 미들웨어
-    유저 토근 인증
+<br/>
+    -유저 토근 인증
+<br/>
+<br/>
 6. 배치
-    자동 출금
-    자동 출금 정지
+<br/>
+    -자동 출금
+<br/>
+    -자동 출금 정지
 
 ## 사용 예제
     
@@ -50,3 +70,11 @@
 자동 출금 : [GET] http://localhost:8000/batchs/withdrawal
 <br/>
 자동 출금 정지 : [GET] http://localhost:8000/batchs/stop-withdrawal
+<br/>
+
+## API 가이드
+[API 가이드](https://glib-layer-248.notion.site/API-Guide-3973d5c1c5384ec68fc19bbc271244f7)
+<br/>
+
+## notion
+[notion](https://glib-layer-248.notion.site/assets_management-3da7065e690c438da88c424850890182)
