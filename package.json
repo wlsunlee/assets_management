@@ -5,7 +5,7 @@
   "main": "without_express.js",
   "scripts": {
     "start": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "cat .env.test > .env && npx prisma migrate reset -f && jest --verbose --maxWorkers=1",
     "distribute": "npm i && prisma generate && pm2 start server.js --name assets_management -i max"
   },
   "keywords": [],
@@ -17,12 +17,17 @@
     "node-cron": "^3.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.18.2",
+    "@babel/preset-env": "^7.18.2",
     "@prisma/client": "^3.11.0",
+    "babel-jest": "^28.1.0",
     "bcrypt": "^5.0.1",
     "dotenv": "^16.0.0",
+    "jest": "^28.1.0",
     "jsonwebtoken": "^8.5.1",
     "nodemon": "^2.0.15",
+    "pm2": "^5.1.2",
     "prisma": "^3.11.0",
-    "pm2": "^5.1.2"
+    "supertest": "^6.2.3"
   }
 }
