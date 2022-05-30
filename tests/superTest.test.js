@@ -6,7 +6,7 @@ const data = require("./data/testsData");
 const userTest = require("./users");
 const assetTest = require("./assets");
 const withdrawalTest = require("./withdrawals");
-//const detailTest = require("./details");
+const detailTest = require("./details");
 
 beforeAll(async () => {
     await prisma.user.create({
@@ -48,4 +48,4 @@ afterAll(async () => {
 userTest.userTest();
 assetTest.assetTest();
 withdrawalTest.withdrawalTest();
-//detailTest.detailTest();
+detailTest.detailTest();
