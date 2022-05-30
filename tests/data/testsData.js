@@ -103,5 +103,179 @@ exports.testsData = {
             quantity : 500000,
             blockchain_type_id : 5
         }
+    ],
+    withdrawals : [
+        {
+            asset_id : 1,
+            withdrawal_address : "614ff260903e42d6c66e5c6e61414cc437f186c86bde8e836d58874c597b2ab6",
+            quantity : 11.6543,
+            status : "완료",
+            blockchain_type_id : 1
+        },
+        {
+            asset_id : 1,
+            withdrawal_address : "614ff260903e42d6c66e5c6e61414cc437f186c86bde8e836d58874c597b2ab6",
+            quantity : 23.63223,
+            status : "완료",
+            blockchain_type_id : 1
+        },
+        {
+            asset_id : 1,
+            withdrawal_address : "614ff260903e42d6c66e5c6e61414cc437f186c86bde8e836d58874c597b2ab6",
+            quantity : 14.64411,
+            status : "완료",
+            blockchain_type_id : 1
+        },
+        {
+            asset_id : 1,
+            withdrawal_address : "614ff260903e42d6c66e5c6e61414cc437f186c86bde8e836d58874c597b2ab6",
+            quantity : 18.09422321,
+            status : "완료",
+            blockchain_type_id : 1
+        },
+        {
+            asset_id : 1,
+            withdrawal_address : "614ff260903e42d6c66e5c6e61414cc437f186c86bde8e836d58874c597b2ab6",
+            quantity : 30,
+            status : "취소",
+            blockchain_type_id : 1
+        },
+        {
+            asset_id : 2,
+            withdrawal_address : "447dd6150f4dd0858cec7d451c7a3020d6254f9fa0cf78ad222d21b0451596d6",
+            quantity : 0.5,
+            status : "완료",
+            blockchain_type_id : 4
+        },
+        {
+            asset_id : 2,
+            withdrawal_address : "447dd6150f4dd0858cec7d451c7a3020d6254f9fa0cf78ad222d21b0451596d6",
+            quantity : 1.5,
+            status : "완료",
+            blockchain_type_id : 4
+        },
+        {
+            asset_id : 2,
+            withdrawal_address : "447dd6150f4dd0858cec7d451c7a3020d6254f9fa0cf78ad222d21b0451596d6",
+            quantity : 3,
+            status : "완료",
+            blockchain_type_id : 4
+        },
+        {
+            asset_id : 2,
+            withdrawal_address : "447dd6150f4dd0858cec7d451c7a3020d6254f9fa0cf78ad222d21b0451596d6",
+            quantity : 30,
+            status : "취소",
+            blockchain_type_id : 4
+        },
+        {
+            asset_id : 3,
+            withdrawal_address : "5e1f038b37d60f55d94c08b1c376a29cd51fce1100659721309183583ade44f8",
+            quantity : 100,
+            status : "완료",
+            blockchain_type_id : 1
+        },
+        {
+            asset_id : 3,
+            withdrawal_address : "5e1f038b37d60f55d94c08b1c376a29cd51fce1100659721309183583ade44f8",
+            quantity : 200,
+            status : "완료",
+            blockchain_type_id : 1
+        },
+        {
+            asset_id : 3,
+            withdrawal_address : "5e1f038b37d60f55d94c08b1c376a29cd51fce1100659721309183583ade44f8",
+            quantity : 2,
+            status : "취소",
+            blockchain_type_id : 1
+        },
+        {
+            asset_id : 4,
+            withdrawal_address : "b7f5f1b731a2dc5ae25afffa953b69cabaf2df15c53c841ce894bb3b65853cdd",
+            quantity : 100000,
+            status : "완료",
+            blockchain_type_id : 5
+        },
+        {
+            asset_id : 4,
+            withdrawal_address : "b7f5f1b731a2dc5ae25afffa953b69cabaf2df15c53c841ce894bb3b65853cdd",
+            quantity : 0.001,
+            status : "취소",
+            blockchain_type_id : 5
+        }
+    ],
+    deposits : [
+        {
+            asset_id: 1,
+            quantity : 11.6543,
+            status : "완료",
+            blockchain_type_id : 1
+        },
+        {
+            asset_id: 1,
+            quantity : 10,
+            status : "취소",
+            blockchain_type_id : 1
+        },
+        {
+            asset_id: 1,
+            quantity : 10,
+            status : "완료",
+            blockchain_type_id : 1
+        },
+        {
+            asset_id: 2,
+            quantity : 3.000316083,
+            status : "완료",
+            blockchain_type_id : 4
+        },
+        {
+            asset_id: 2,
+            quantity : 42.000316083,
+            status : "취소",
+            blockchain_type_id : 4
+        },
+        {
+            asset_id: 2,
+            quantity : 3.000316083,
+            status : "완료",
+            blockchain_type_id : 4
+        },
+        {
+            asset_id: 3,
+            quantity : 0.000316083,
+            status : "완료",
+            blockchain_type_id : 1
+        },
+        {
+            asset_id: 3,
+            quantity : 12.443211083,
+            status : "완료",
+            blockchain_type_id : 1
+        },
+        {
+            asset_id: 4,
+            quantity : 100000,
+            status : "취소",
+            blockchain_type_id : 5
+        },
+        {
+            asset_id: 4,
+            quantity : 33333.33333333333,
+            status : "완료",
+            blockchain_type_id : 5
+        },
+        {
+            asset_id: 4,
+            quantity : 234444,
+            status : "취소",
+            blockchain_type_id : 5
+        },
+        {
+            asset_id: 4,
+            quantity : 33333.33333333333,
+            status : "완료",
+            blockchain_type_id : 5
+        }
     ]
 }
