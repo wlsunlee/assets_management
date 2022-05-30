@@ -22,7 +22,7 @@ const dataRepackage = (pageCount, search, res) => {
     offset <= 0 ? offset = 0 : false;
     !!search ? search = "%" + search + "%" : false;
     
-    data = {
+    let data = {
         "offset" : offset,
         "search" : search
     }

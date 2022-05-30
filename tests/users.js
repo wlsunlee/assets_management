@@ -1,25 +1,7 @@
 const request = require("supertest");
 const server = require("../server");
-const { PrismaClient } = require("@prisma/client");
-const data = require("./data/testsData");
 
-const prisma = new PrismaClient();
-
-beforeAll(async () => {    
-    await prisma.user.create({
-        data : data.testsData.users[0]
-    });    
-});
-
-afterAll(async () => {
-    await prisma.user.delete({
-        where: {
-            email: 'testUser001@gmail.com'
-        }
-    });
-});
-
-describe("user test", () => {
+exports.userTest = () => describe("user test", () => {
 
     test("login_success_case_01", async () => {
         await request(server)
@@ -86,7 +68,7 @@ describe("user test", () => {
             .get('/users/info')
             .set("access_token", "")
             .expect(401, {status: 401, message : "INVALID_TOKEN"});
-    }); 
+    });   
     
 });
 
